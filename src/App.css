@@ -1,38 +1,196 @@
-.App {
+/* frontend/src/App.css */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212; /* Keep dark background */
+  color: #f0f0f0;
+  min-height: 100vh;
+}
+
+.app-container {
+  max-width: 1400px; /* <<< Increased Max Width */
+  margin: auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* Space between cards */
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 1rem; /* Reduced margin below h1 */
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 1.5rem; /* Space below h2 */
+  border-bottom: 1px solid #444; /* Add separator */
+  padding-bottom: 0.75rem; /* Space below separator */
+}
+
+h3 {
+    /* Defined in ResultsDisplay.css if needed */
+}
+
+.card {
+  background-color: #1f1f1f; /* Card background */
+  padding: 2rem;
+  border-radius: 1rem; /* More rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border: 1px solid #333; /* Subtle border */
+}
+
+/* Target Textarea specifically in JobTextArea component if needed */
+/* JobTextArea might have its own wrapper/styling */
+textarea {
+  width: 100%;
+  box-sizing: border-box; /* Include padding/border in width */
+  padding: 1rem;
+  background-color: #1e1e1e;
+  border: 1px solid #555;
+  border-radius: 0.75rem;
+  color: #f5f5f5;
+  font-size: 1.0rem; /* Slightly smaller */
+  line-height: 1.6;
+  resize: vertical;
+  min-height: 150px; /* Default height */
+  margin-bottom: 1rem; /* Space below textarea */
+}
+
+/* General Button Styles */
+.button {
+  padding: 0.8rem 1.6rem; /* Slightly larger padding */
+  margin-top: 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  font-weight: 600; /* Bolder button text */
+}
+.button:active {
+    transform: scale(0.98); /* Press effect */
+}
+
+.button.analyze { /* Specific style for initial analyze */
+  background-color: #2196f3; /* Blue */
+  color: #fff;
+}
+.button.analyze:hover {
+  background-color: #1976d2;
+}
+
+.button.download { /* Specific style for download */
+  background-color: #4caf50; /* Green */
+  color: #fff;
+}
+.button.download:hover {
+  background-color: #388e3c;
+}
+
+/* Secondary button style (Use Different Resume) */
+.button.secondary {
+  background-color: #6c757d; /* Gray */
+  color: #fff;
+}
+.button.secondary:hover {
+  background-color: #5a6268;
+}
+
+
+.button:disabled {
+  background-color: #444; /* Darker gray when disabled */
+  color: #888;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.loading-indicator {
+  margin-top: 1rem;
+  color: #bbb;
+  text-align: center;
+  font-style: italic;
+}
+
+.error-message {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  color: #ffcccc; /* Lighter red text */
+  background-color: #5e2a2a; /* Dark red background */
+  border: 1px solid #ff6b6b; /* Red border */
+  border-radius: 0.5rem;
+  font-weight: 500; /* Slightly bolder */
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+/* --- Styles from old App.css that target ResultsDisplay internals --- */
+/* These should primarily live in ResultsDisplay.css now, but keep */
+/* basic dark theme overrides here if needed as fallback */
+
+.suggestions-box,
+.resume-edit-box,
+.ats-output-box {
+   /* Remove background/border/color from here if defined in ResultsDisplay.css */
+   /* Ensure they don't override intended styles */
+   margin-top: 0; /* Remove top margin if gap handles spacing */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+
+/* Footer buttons container */
+.action-buttons-footer {
+    margin-top: 2rem; /* Space above footer buttons */
+    padding-top: 1.5rem; /* Space within footer */
+    border-top: 1px solid #444; /* Separator line */
+    display: flex;
+    justify-content: center; /* Center buttons */
+    gap: 1rem; /* Space between buttons */
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+.action-buttons-footer .button {
+    margin-top: 0; /* Remove top margin for footer buttons */
+}
+
+
+/* Remove duplicated styles if they are defined and imported via ResultsDisplay.css */
+/* .suggestions-list li { ... } */
+/* .ats-output { ... } */
+/* .resume-preview-box { ... } */
+/* .reanalyze-button-container { ... } */
+/* .reanalyze-button { ... } */
+
+
+/* Custom scrollbar */
+textarea::-webkit-scrollbar,
+.result-box::-webkit-scrollbar { /* If result-box class is used */
+  width: 10px; /* Slightly wider */
+}
+
+textarea::-webkit-scrollbar-thumb,
+.result-box::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 5px;
+}
+
+textarea::-webkit-scrollbar-track,
+.result-box::-webkit-scrollbar-track {
+  background: #1e1e1e; /* Match textarea bg */
+}
+
+/* Responsive */
+@media (max-width: 768px) { /* Adjusted breakpoint */
+  .app-container {
+    padding: 1rem;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  h1 {
+    font-size: 2rem;
   }
-  to {
-    transform: rotate(360deg);
-  }
+  /* Stack editor section columns on smaller screens */
+  /* This might be better handled within ResultsDisplay.css */
+  /* .editor-section { flex-direction: column; } */
 }

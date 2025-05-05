@@ -1,0 +1,23 @@
+.job-textarea-wrapper {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+  }
+  
+  .job-textarea-label {
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  
+  .job-textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: sans-serif;
+    font-size: 1rem;
+    color: black;
+    resize: vertical;
+    background: #f9f9f9;
+  }
+  
